@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("MagicalTower"))
         {
+            Debug.Log("enter");
             MagicalTowerController towerController=other.gameObject.GetComponent<MagicalTowerController>();
             towerController.TakeDamage(damage);
             Destroy(this.gameObject);
