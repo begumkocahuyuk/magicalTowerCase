@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     private Transform _mTower;
     public float speed;
     public int damage;
-    public int health;
+    public float health;
 
     void Start()
     {
@@ -23,7 +23,14 @@ public class EnemyController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _mTower.position, speed * Time.deltaTime);
     }
-
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= 0f)
+        {
+            Destroy(gameObject);  // Düþmaný yok et
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("MagicalTower"))
